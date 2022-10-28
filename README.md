@@ -22,6 +22,7 @@ To access top-level items, you can use the read and watch functions exposed by P
 * [Dependency Injection](https://github.com/fluttercommunity/get_it)
 * [Flutter BLoC](https://pub.dev/packages/flutter_bloc)
 * [Provider](https://pub.dev/packages/provider)
+* [Dartz](https://pub.dev/packages/dartz)
 * [Pine](https://github.com/MyLittleSuite/pine)
 ---
 
