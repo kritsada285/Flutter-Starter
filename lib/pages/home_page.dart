@@ -15,15 +15,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final _txtPhoneNoController = TextEditingController(text: '0876543212');
   final _txtPasswordController = TextEditingController(text: '1231231234');
-  bool isLoading = true;
-
-  AuthenBloc? _authBloc;
-
-  @override
-  void initState() {
-    super.initState();
-    _authBloc = BlocProvider.of<AuthenBloc>(context);
-  }
 
   Text _showStatusText(AuthenState state) {
     if (state is AuthenErrorState) {
@@ -33,21 +24,11 @@ class _MyHomePageState extends State<MyHomePage> {
       return Text('Success',
           style: TextStyle(color: Colors.green.withOpacity(0.8)));
     }
-
     return const Text('');
   }
 
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
-      foregroundColor: Colors.black87,
-      backgroundColor: Colors.grey[300],
-      minimumSize: const Size(88, 36),
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(2)),
-      ),
-    );
 
     return Scaffold(
         appBar: AppBar(
@@ -85,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         ),
                         AppPrimaryButton(
-                            onPressed: () => _authBloc!.add(FetchAuthen(
+                            onPressed: () => context.read<AuthenBloc>().add(FetchAuthen(
                                 phoneNo: _txtPhoneNoController.text,
                                 password: _txtPasswordController.text)),
                             title: 'Sign In'),
