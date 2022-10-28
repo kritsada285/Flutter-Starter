@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tgv_mobile/constants/app_theme.dart';
 import 'package:tgv_mobile/di/dependency_injector.dart';
-
-import 'pages/home_page.dart';
+import 'utils/routes/routes.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -14,7 +13,7 @@ class MyApp extends StatelessWidget {
           child: MaterialApp(
             title: 'TGV',
             theme: AppTheme.lightThemeData,
-            home: const MyHomePage(title: 'Flutter Starter'),
+            routes: Routes.routes
           )
       );
 }

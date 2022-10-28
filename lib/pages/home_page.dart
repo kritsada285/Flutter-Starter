@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tgv_mobile/blocs/authen/authen_bloc.dart';
+import 'package:tgv_mobile/utils/routes/routes.dart';
 import 'package:tgv_mobile/widgets/app_primary_button.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -20,9 +21,6 @@ class _MyHomePageState extends State<MyHomePage> {
     if (state is AuthenErrorState) {
       return Text((state).error.message,
           style: TextStyle(color: Colors.red.withOpacity(0.8)));
-    } else if (state is AuthenSuccessState) {
-      return Text('Success',
-          style: TextStyle(color: Colors.green.withOpacity(0.8)));
     }
     return const Text('');
   }
@@ -35,6 +33,14 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         resizeToAvoidBottomInset: false,
         body: BlocBuilder<AuthenBloc, AuthenState>(builder: (context, state) {
+
+          if(state is AuthenSuccessState) {
+            Future.delayed(const Duration(milliseconds: 0), () {
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  Routes.profile, (Route<dynamic> route) => false);
+            });
+          }
+
           return Stack(
             children: [
               Center(
