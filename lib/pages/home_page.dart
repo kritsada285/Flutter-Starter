@@ -29,11 +29,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
         ),
+        resizeToAvoidBottomInset: false,
         body: BlocBuilder<AuthenBloc, AuthenState>(builder: (context, state) {
           return Stack(
             children: [
@@ -48,7 +48,6 @@ class _MyHomePageState extends State<MyHomePage> {
                             controller: _txtPhoneNoController,
                             decoration: const InputDecoration(
                               border: OutlineInputBorder(),
-                              labelText: 'Phone No.',
                               hintText: 'Enter Phone Number',
                             ),
                           ),
@@ -60,16 +59,16 @@ class _MyHomePageState extends State<MyHomePage> {
                             controller: _txtPasswordController,
                             decoration: const InputDecoration(
                               border: OutlineInputBorder(),
-                              labelText: 'Password',
                               hintText: 'Enter Password',
                             ),
                           ),
                         ),
                         AppPrimaryButton(
-                            onPressed: () => context.read<AuthenBloc>().add(FetchAuthen(
-                                phoneNo: _txtPhoneNoController.text,
-                                password: _txtPasswordController.text)),
-                            title: 'Sign In'),
+                            onPressed: () => context.read<AuthenBloc>().add(
+                                FetchAuthen(
+                                    phoneNo: _txtPhoneNoController.text,
+                                    password: _txtPasswordController.text)),
+                            title: 'Login'),
                         Padding(
                             padding: const EdgeInsets.all(15),
                             child: _showStatusText(state)),

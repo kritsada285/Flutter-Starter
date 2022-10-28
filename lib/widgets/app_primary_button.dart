@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tgv_mobile/constants/app_theme.dart';
 
 class AppPrimaryButton extends StatelessWidget {
   const AppPrimaryButton(
@@ -11,8 +12,6 @@ class AppPrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
-      foregroundColor: Colors.black87,
-      backgroundColor: Colors.grey[300],
       minimumSize: const Size(88, 36),
       padding: const EdgeInsets.symmetric(horizontal: 16),
       shape: const RoundedRectangleBorder(
@@ -20,7 +19,10 @@ class AppPrimaryButton extends StatelessWidget {
       ),
     );
 
-    return ElevatedButton(
-        style: raisedButtonStyle, onPressed: onPressed, child: Text(title));
+    return Theme(
+      data: AppTheme.lightThemeData,
+      child: ElevatedButton(
+          style: raisedButtonStyle, onPressed: onPressed, child: Text(title)),
+    );
   }
 }

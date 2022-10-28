@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tgv_mobile/constants/app_theme.dart';
 import 'package:tgv_mobile/di/dependency_injector.dart';
 
 import 'pages/home_page.dart';
@@ -12,9 +13,7 @@ class MyApp extends StatelessWidget {
       DependencyInjector(
           child: MaterialApp(
             title: 'TGV',
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-            ),
+            theme: AppTheme.lightThemeData,
             home: const MyHomePage(title: 'Flutter Starter'),
           )
       );
